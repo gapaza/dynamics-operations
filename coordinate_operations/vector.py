@@ -21,6 +21,9 @@ class Vector:
         self.y      = a2
         self.z      = a3
 
+    def __str__(self):
+        return self.system, self.x, self.y, self.z
+
     def __add__(self, vec):
         if(self.system != vec.system):
             raise Exception("the basis must be the same when adding vectors")
