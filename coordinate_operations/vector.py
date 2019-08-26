@@ -1,8 +1,5 @@
 import os
 import sys
-import pandas
-import numpy
-import scipy
 
 
 
@@ -22,7 +19,8 @@ class Vector:
         self.z      = a3
 
     def __str__(self):
-        return self.system, self.x, self.y, self.z
+        to_return = "Coordinate System: " + str(self.system) + "\n x = " + str(self.x) + "\n y = " + str(self.y) + "\n z = " + str(self.z)
+        return to_return
 
     def __add__(self, vec):
         if(self.system != vec.system):
