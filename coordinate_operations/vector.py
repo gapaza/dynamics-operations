@@ -20,3 +20,9 @@ class Vector:
         self.x      = a1
         self.y      = a2
         self.z      = a3
+
+    def __add__(self, vec):
+        if(self.system != vec.system):
+            raise Exception("the basis must be the same when adding vectors")
+        if(self.system == "cartesian"):
+            return Vector("cartesian", self.x + vec.x, self.y + vec.y, self.z + vec.z)
