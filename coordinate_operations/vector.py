@@ -1,7 +1,7 @@
 import os
 import sys
-import math
-
+import numpy as np
+from math import *
 
 
 
@@ -30,9 +30,9 @@ class Vector:
         self.dim2          = a2
         self.dim3          = a3
         if(system == 'cartesian'):
-            self.magnitude = sqrt(pow(a1,2) + pow(a2,2) + pow(a3,2))
+            self.magnitude = np.sqrt(pow(a1,2) + pow(a2,2) + pow(a3,2))
         elif(system == 'cylindrical'):
-            self.magnitude = sqrt(pow(a1,2) + pow(a3,2))
+            self.magnitude = np.sqrt(pow(a1,2) + pow(a3,2))
 
         self.valid_systems = ['cartesian', 'cylindrical']
 
@@ -62,7 +62,7 @@ class Vector:
     def dot(self, vec):
         if(self.system == 'cartesian' and vec.system == 'cartesian'):
             return ((self.dim1 * vec.dim1) + (self.dim2 * vec.dim2) + (self.dim3 * vec.dim3))
-        else(self.system == 'cylindrical' and vec.system == 'cylindrical'):
+        elif(self.system == 'cylindrical' and vec.system == 'cylindrical'):
             cart1 = self.change_system('cartesian')
             cart2 = vec.change_system('cartesian')
             return cart1.dot(cart2)
@@ -81,7 +81,7 @@ class Vector:
 
         if(self.system == 'cartesian'):
             if(new_system == 'cylindrical'):
-                r     = sqrt(pow(self.dim1,2) + pow(self.dim2,2))
+                r     = np.sqrt(pow(self.dim1,2) + pow(self.dim2,2))
                 theta = atan(self.dim2 / self.dim1)
                 z     = self.dim3
                 return Vector('cylindrical',r,theta,z)
