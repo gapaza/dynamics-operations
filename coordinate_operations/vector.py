@@ -37,7 +37,10 @@ class Vector:
         self.valid_systems = ['cartesian', 'cylindrical']
 
     def __str__(self):
-        to_return = "Coordinate System: " + str(self.system) + "\nx = " + str(self.dim1) + "\ny = " + str(self.dim2) + "\nz = " + str(self.dim3)
+        if(self.system == "cartesian"):
+            to_return = "Coordinate System: " + str(self.system) + "\nx = " + str(self.dim1) + "\ny = " + str(self.dim2) + "\nz = " + str(self.dim3)
+        elif(self.system == "cylindrical"):
+            to_return = "Coordinate System: " + str(self.system) + "\nr = " + str(self.dim1) + "\ntheta = " + str(self.dim2) + "\nz = " + str(self.dim3)
         return to_return
 
 
@@ -89,7 +92,7 @@ class Vector:
             if(new_system == 'cartesian'):
                 x = self.dim1 * cos(self.dim2)
                 y = self.dim1 * sin(self.dim2)
-                z = z
+                z = self.dim3
                 return Vector('cartesian',x,y,z)
         print("No change occurred")
         return False
